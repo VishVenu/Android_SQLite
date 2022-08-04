@@ -54,6 +54,8 @@ public class ViewContactsActivity extends AppCompatActivity {
 
             // setting our adapter to recycler view.
             contactsRV.setAdapter(userRVAdapter);
+
+            //set visibility
             contactsRV.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
         }
