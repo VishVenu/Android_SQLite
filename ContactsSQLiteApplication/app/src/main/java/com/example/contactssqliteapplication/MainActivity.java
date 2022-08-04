@@ -1,5 +1,6 @@
 package com.example.contactssqliteapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText nameEdt, telPhoneNumberEdt, emailAddressEdt, addressEdt;
     private Button addUserBtn;
     private Button readAllUserDetailsBtn;
+    private Button searchUserDetailsBtn;
     private DBHandler dbHandler;
 
     @Override
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         addressEdt = findViewById(R.id.idEdtAddress);
         addUserBtn = findViewById(R.id.idBtnAddUserDetails);
         readAllUserDetailsBtn = findViewById(R.id.idBtnReadAllUserDetails);
+        searchUserDetailsBtn = findViewById(R.id.idBtnSearchUser);
 
         // creating a new dbhandler class
         // and passing our context to it.
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // on below line we are calling a method to add new
                 // course to sqlite data and pass all our values to it.
-                dbHandler.addNewUser(name, emailAddress, address, telephoneNumber);
+                dbHandler.addNewUser(name, telephoneNumber, emailAddress, address);
 
                 // after adding the data we are displaying a toast message.
                 Toast.makeText(MainActivity.this, "User details has been added.", Toast.LENGTH_SHORT).show();
@@ -61,6 +64,31 @@ public class MainActivity extends AppCompatActivity {
                 emailAddressEdt.setText("");
                 telPhoneNumberEdt.setText("");
                 addressEdt.setText("");
+            }
+        });
+
+
+        readAllUserDetailsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // opening a new activity via a intent.
+                Intent i = new Intent(MainActivity.this, ViewContactsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        searchUserDetailsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = nameEdt.getText().toString();
+                if(!name.equals("")) {
+                    // opening a new activity via a intent.
+                    Intent i = new Intent(MainActivity.this, ViewContactsActivity.class);
+                    i.putExtra("name", name);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(MainActivity.this, "Please enter a name to search", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

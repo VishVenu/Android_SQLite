@@ -2,8 +2,11 @@ package com.example.contactssqliteapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -81,6 +84,97 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // at last we are closing our
         // database after adding database.
+        db.close();
+    }
+
+    public ArrayList<UserModal> readUsers() {
+        // on below line we are creating a
+        // database for reading our database.
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // on below line we are creating a cursor with query to read data from database.
+        Cursor cursorContacts = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        // on below line we are creating a new array list.
+        ArrayList<UserModal> userModalArrayList = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorContacts.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                userModalArrayList.add(new UserModal(cursorContacts.getString(1),
+                        cursorContacts.getString(2),
+                        cursorContacts.getString(3),
+                        cursorContacts.getString(4)));
+            } while (cursorContacts.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorContacts.close();
+        return userModalArrayList;
+    }
+
+    public ArrayList<UserModal> readUser(String name) {
+        // on below line we are creating a
+        // database for reading our database.
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // on below line we are creating a cursor with query to read data from database.
+        String query = "SELECT * FROM "+ TABLE_NAME +" WHERE name=?";
+        Cursor cursorContacts = db.rawQuery(query, new String[] {name});
+
+        // on below line we are creating a new array list.
+        ArrayList<UserModal> userModalArrayList = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorContacts.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                userModalArrayList.add(new UserModal(cursorContacts.getString(1),
+                        cursorContacts.getString(2),
+                        cursorContacts.getString(3),
+                        cursorContacts.getString(4)));
+            } while (cursorContacts.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorContacts.close();
+        return userModalArrayList;
+    }
+
+    // below is the method for updating our courses
+    public void updateContact(String originalUserName, String name, String telephoneNumber,
+                              String emailAddress, String address) {
+
+        // calling a method to get writable database.
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // on below line we are passing all values
+        // along with its key and value pair.
+        values.put(NAME_COL, name);
+        values.put(TELEPHONE_NUMBER_COL, telephoneNumber);
+        values.put(EMAIL_ADDRESS_COL, emailAddress);
+        values.put(ADDRESS_COL, address);
+
+        // on below line we are calling a update method to update our database and passing our values.
+        // and we are comparing it with name of our course which is stored in original name variable.
+        db.update(TABLE_NAME, values, "name=?", new String[]{originalUserName});
+        db.close();
+    }
+
+    // below is the method for deleting our course.
+    public void deleteContact(String name) {
+
+        // on below line we are creating
+        // a variable to write our database.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // on below line we are calling a method to delete our
+        // course and we are comparing it with our course name.
+        db.delete(TABLE_NAME, "name=?", new String[]{name});
         db.close();
     }
 

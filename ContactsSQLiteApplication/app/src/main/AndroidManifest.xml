@@ -14,6 +14,12 @@
         android:theme="@style/Theme.ContactsSQLiteApplication"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateContactsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewContactsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

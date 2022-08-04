@@ -7,20 +7,46 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!--Edit text to enter user name-->
-    <EditText
-        android:id="@+id/idEdtName"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Enter the Name" />
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:clickable="false"
+        android:textStyle="bold"
+        android:textColor="@color/purple_500"
+        android:hint="Contacts" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!--Edit text to enter user name-->
+        <EditText
+            android:id="@+id/idEdtName"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="Enter the Name" />
+
+        <Button
+            android:id="@+id/idBtnSearchUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/purple_500"
+            android:text="Search"/>
+    </LinearLayout>
 
     <!--edit text to enter tel number-->
     <EditText
         android:id="@+id/idEdtTelNumber"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
         android:inputType="phone"
         android:hint="Enter Telephone Number" />
 
@@ -28,8 +54,8 @@
     <EditText
         android:id="@+id/idEdtEmailAddress"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
         android:inputType="textEmailAddress"
         android:hint="Enter Email Address" />
 
@@ -37,8 +63,8 @@
     <EditText
         android:id="@+id/idEdtAddress"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
         android:lines="3"
         android:inputType="textPostalAddress"
         android:hint="Enter Address" />
@@ -58,6 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:background="@color/teal_700"
         android:text="Read All Details"
         android:textAllCaps="false" />
 </LinearLayout>

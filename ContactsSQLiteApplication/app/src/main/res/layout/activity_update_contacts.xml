@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UpdateContactsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:clickable="false"
+        android:textStyle="bold"
+        android:textColor="@color/purple_500"
+        android:hint="Contacts" />
+
+    <!--Edit text to enter user name-->
+    <EditText
+        android:id="@+id/idEdtUpdateName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter the Name" />
+
+    <!--edit text to enter tel number-->
+    <EditText
+        android:id="@+id/idEdtUpdateTelNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="phone"
+        android:hint="Enter Telephone Number" />
+
+    <!--edit text to enter email address-->
+    <EditText
+        android:id="@+id/idEdtUpdateEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textEmailAddress"
+        android:hint="Enter Email Address" />
+
+    <!--edit text for address-->
+    <EditText
+        android:id="@+id/idEdtUpdateAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:lines="3"
+        android:inputType="textPostalAddress"
+        android:hint="Enter Address" />
+
+    <!--button for updating user details-->
+    <Button
+        android:id="@+id/idBtnUpdateUserDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Update Details"
+        android:textAllCaps="false" />
+
+    <!--button for deleting user details-->
+    <Button
+        android:id="@+id/idBtnDeleteUserDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Delete Contacts"
+        android:textAllCaps="false" />
+</LinearLayout>
+
