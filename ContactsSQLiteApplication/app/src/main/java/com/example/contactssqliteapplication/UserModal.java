@@ -1,5 +1,7 @@
 package com.example.contactssqliteapplication;
 
+import android.net.Uri;
+
 public class UserModal {
 
     // variables for our name,
@@ -8,6 +10,7 @@ public class UserModal {
     private String telephoneNumber;
     private String emailAddress;
     private String address;
+    private String imageUrl;
 
     // creating getter methods
     public String getName() {
@@ -26,11 +29,14 @@ public class UserModal {
         return address;
     }
 
+    public String getImageUrl(){return imageUrl.toString();}
+
     // constructor
-    public UserModal(String name, String telephoneNumber, String emailAddress, String address) {
+    public UserModal(String name, String telephoneNumber, String emailAddress, String address, String imageUri) {
         this.name = name;
         this.telephoneNumber = telephoneNumber;
         this.emailAddress = emailAddress;
         this.address = address;
+        this.imageUrl = imageUri;
     }
 }

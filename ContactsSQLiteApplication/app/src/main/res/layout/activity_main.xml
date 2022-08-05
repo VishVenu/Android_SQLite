@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="50dp"
+        android:layout_margin="30dp"
         android:gravity="center"
         android:textSize="30dp"
         android:clickable="false"
@@ -69,6 +69,15 @@
         android:inputType="textPostalAddress"
         android:hint="Enter Address" />
 
+    <!--edit text to enter image-->
+    <EditText
+        android:id="@+id/idEdtImage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:inputType="text"
+        android:hint="Enter Image Url" />
+
     <!--button for adding new user details-->
     <Button
         android:id="@+id/idBtnAddUserDetails"
@@ -77,6 +86,7 @@
         android:layout_margin="10dp"
         android:text="Add Details"
         android:textAllCaps="false" />
+
 
     <!--button for reading all user details-->
     <Button

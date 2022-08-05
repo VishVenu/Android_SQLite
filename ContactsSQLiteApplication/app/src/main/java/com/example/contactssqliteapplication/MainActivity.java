@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     // creating variables for our edittext, button and dbhandler
-    private EditText nameEdt, telPhoneNumberEdt, emailAddressEdt, addressEdt;
+    private EditText nameEdt, telPhoneNumberEdt, emailAddressEdt, addressEdt, imageEdt;
     private Button addUserBtn;
     private Button readAllUserDetailsBtn;
     private Button searchUserDetailsBtn;
@@ -29,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
         telPhoneNumberEdt = findViewById(R.id.idEdtTelNumber);
         emailAddressEdt = findViewById(R.id.idEdtEmailAddress);
         addressEdt = findViewById(R.id.idEdtAddress);
+        imageEdt=findViewById(R.id.idEdtImage);
         addUserBtn = findViewById(R.id.idBtnAddUserDetails);
         readAllUserDetailsBtn = findViewById(R.id.idBtnReadAllUserDetails);
         searchUserDetailsBtn = findViewById(R.id.idBtnSearchUser);
+
 
         // creating a new dbhandler class
         // and passing our context to it.
@@ -47,16 +49,17 @@ public class MainActivity extends AppCompatActivity {
                 String telephoneNumber = telPhoneNumberEdt.getText().toString();
                 String emailAddress = emailAddressEdt.getText().toString();
                 String address = addressEdt.getText().toString();
+                String image = imageEdt.getText().toString();
 
                 // validating if the text fields are empty or not.
-                if (name.isEmpty() && telephoneNumber.isEmpty() && emailAddress.isEmpty() && address.isEmpty()) {
+                if (name.isEmpty() && telephoneNumber.isEmpty() && emailAddress.isEmpty() && address.isEmpty() && image.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // on below line we are calling a method to add new
                 // course to sqlite data and pass all our values to it.
-                dbHandler.addNewUser(name, telephoneNumber, emailAddress, address);
+                dbHandler.addNewUser(name, telephoneNumber, emailAddress, address, image);
 
                 // after adding the data we are displaying a toast message.
                 Toast.makeText(MainActivity.this, "User details has been added.", Toast.LENGTH_SHORT).show();
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 emailAddressEdt.setText("");
                 telPhoneNumberEdt.setText("");
                 addressEdt.setText("");
+                imageEdt.setText("");
             }
         });
 

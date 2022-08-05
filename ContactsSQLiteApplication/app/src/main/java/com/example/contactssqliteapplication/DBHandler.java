@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
 
     // below variable is for our table name.
-    private static final String TABLE_NAME = "mycontacts";
+    private static final String TABLE_NAME = "contacts";
 
     // below variable is for our id column.
     private static final String ID_COL = "id";
@@ -34,6 +35,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // below variable is for our course tracks column.
     private static final String ADDRESS_COL = "address";
+
+    private static final String IMAGE_URL_COL = "imageUrl";
 
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
@@ -52,7 +55,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 + NAME_COL + " TEXT,"
                 + TELEPHONE_NUMBER_COL + " TEXT,"
                 + EMAIL_ADDRESS_COL + " TEXT,"
-                + ADDRESS_COL + " TEXT)";
+                + ADDRESS_COL + " TEXT,"
+                + IMAGE_URL_COL + " TEXT)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -60,7 +64,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // this method is use to add new course to our sqlite database.
-    public void addNewUser(String name, String telephoneNumber, String emailAddress, String address) {
+    public void addNewUser(String name, String telephoneNumber, String emailAddress, String address, String imageUrl) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -77,6 +81,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(TELEPHONE_NUMBER_COL, telephoneNumber);
         values.put(EMAIL_ADDRESS_COL, emailAddress);
         values.put(ADDRESS_COL, address);
+        values.put(IMAGE_URL_COL, imageUrl);
 
         // after adding all values we are passing
         // content values to our table.
@@ -105,7 +110,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 userModalArrayList.add(new UserModal(cursorContacts.getString(1),
                         cursorContacts.getString(2),
                         cursorContacts.getString(3),
-                        cursorContacts.getString(4)));
+                        cursorContacts.getString(4),
+                        cursorContacts.getString(5)));
             } while (cursorContacts.moveToNext());
             // moving our cursor to next.
         }
@@ -134,7 +140,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 userModalArrayList.add(new UserModal(cursorContacts.getString(1),
                         cursorContacts.getString(2),
                         cursorContacts.getString(3),
-                        cursorContacts.getString(4)));
+                        cursorContacts.getString(4),
+                        cursorContacts.getString(5)));
             } while (cursorContacts.moveToNext());
             // moving our cursor to next.
         }
